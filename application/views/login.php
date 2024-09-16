@@ -19,7 +19,7 @@
         <!-- Login Box -->
         <div class="login-box">
             <h2>Login</h2>
-            <form action="login.php" method="POST">
+            <form  action="<?= base_url().'index.php/Login/login_post' ?>" method="POST">
                 <div class="input-group">
                     <input type="text" name="username" required>
                     <label>Username</label>

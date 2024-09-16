@@ -11,6 +11,6 @@
                 <li><a href="#" class="active"><i class="icon-dashboard"></i> Dashboard</a></li>
                 <li><a href="#"><i class="icon-user"></i> Users</a></li>
                 <li><a href="#"><i class="icon-settings"></i> Settings</a></li>
-                <li><a href="#"><i class="icon-logout"></i> Logout</a></li>
+                <li><a href="<?php echo site_url('Login/logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
             </ul>
         </div>

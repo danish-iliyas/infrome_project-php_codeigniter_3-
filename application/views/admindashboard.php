@@ -10,12 +10,20 @@
 </head>
 <body>
     <div class="dashboard">
-    <?php $this->load->view('includes/sliderbar'); ?>
-        <!-- Main Content -->
+ 
+                     
+               <!-- // Correctly accessing the 'level' value
+                print_r($level);  //output = 0,1,2
+                 exit;
+    -->
+
+      <?php $this->load->view('includes/sliderbar'); ?>
+         <!-- Main Content -->
         
+         
         <div class="main-content">
         <?php $this->load->view('includes/header'); ?>
-
+         <?php if ($level == 0): ?>
             <section class="stats-section">
                 <div class="stats-card">
                     <h3>Total Users</h3>
@@ -105,5 +113,9 @@
             </section>
         </div>
     </div>
+    <?php else: ?>
+    <h2>Guest Section</h2>
+    <p>Content for guests or unauthorized users.</p>
+<?php endif; ?>
 </body>
 </html>

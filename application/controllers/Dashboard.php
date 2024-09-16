@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class LoginController extends CI_Controller {
+class Dashboard extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,10 +20,17 @@ class LoginController extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        if ($this->session->userdata('user_id') !== NULL) {
+            $level = $this->session->userdata('level');
+            $data['level'] = $level;
+            // checking level of the data 
+            // print_r($data); outpot = 0,1,2
+            // die();
+            $this->load->view('admindashboard', $data);
+        } else {
+            
+            redirect('login'); 
+        }
+       
 	}
-    public function login()
-    {
-        $this->load->view('login');
-    }
 }
