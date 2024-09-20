@@ -37,7 +37,7 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run() === FALSE) {
 		// 	// Load login page with validation errors
 			// print_r($_POST);
-		die();
+		// die();
 			$this->load->view('login');
 		} else {
 			$username = $this->input->post('username');
@@ -51,13 +51,14 @@ class Login extends CI_Controller {
 				// User authenticated
 				$this->session->set_userdata('user_id', $user->login_id);
 				$this->session->set_userdata('username', $user->username);
+				// $this->session->set_userdata('email', $user->email);
 			    $this->session->set_userdata('level', $user->level); // Save user role in session
 			    
 				       
-			    //       //output for debug
+			          //output for debug
 				//   $level = $this->session->userdata('level');
-                //    //  echo "User level: " . $level;
-                //           // die();
+                //     echo "level: " . $level;
+                //           die();
 			 
 
                     //  if ($level === 0) {

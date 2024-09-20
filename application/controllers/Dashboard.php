@@ -21,16 +21,55 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
         if ($this->session->userdata('user_id') !== NULL) {
-            $level = $this->session->userdata('level');
-            $data['level'] = $level;
+            
+
+			$this->load->model('ChildModel'); 
+			$level = $this->session->userdata('level');
+			$user_id = $this->session->userdata('user_id'); // Get the user ID from session
+			// Get total number of children registered by the user
+			$children_data = $this->ChildModel->get_children_by_user($user_id);
+    
+    // Pass children and total count to the view
+          $data['children'] = $children_data['children'];
+          $data['total_children'] = $children_data['total_children'];
+          $data['level'] = $level;
+		  $data['username'] = $this->session->userdata('username');
             // checking level of the data 
             // print_r($data); outpot = 0,1,2
             // die();
-            $this->load->view('admindashboard', $data);
+            $this->load->view('dashboard', $data);
+			// $this->load->view('child_information', $data);
+
         } else {
             
             redirect('login'); 
         }
        
 	}
+       
+	public function child_information() {
+        if ($this->session->userdata('user_id') !== NULL) {
+            $this->load->model('ChildModel');
+            $user_id = $this->session->userdata('user_id'); // Get the user ID from session
+            
+            // Get total number of children registered by the user
+            $children_data = $this->ChildModel->get_children_by_user($user_id);
+
+            // Pass children and total count to the view
+            $data['children'] = $children_data['children'];
+            $data['total_children'] = $children_data['total_children'];
+            $data['level'] = $this->session->userdata('level');
+			$data['username'] = $this->session->userdata('username');
+			
+			
+	   	    // print_r($data['username']);
+            // exit(); // or die();
+            // Load the child information view			
+			$this->load->view('includes/sliderbar', $data); 
+            $this->load->view('child_information', $data);
+        } else {
+            redirect('login');
+        }
+    }
+	
 }
