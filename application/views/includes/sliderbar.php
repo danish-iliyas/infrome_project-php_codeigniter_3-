@@ -12,7 +12,7 @@
                 <li><a href="#" class="active"><i class="icon-dashboard"></i> Dashboard</a></li>
                 <li><a href="#"><i class="icon-user"></i> Users</a></li>
                 <li><a href="#"><i class="icon-settings"></i> Settings</a></li>
-                <li><a href="<?php echo site_url('Login/logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
+                <li><a href="<?php echo site_url('logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
             </ul>
         </div>
         
@@ -23,9 +23,9 @@
             </div>
             <ul class="nav-links">
                 <!-- <li><a href="#" class="active"><i class="icon-dashboard"></i> Dashboard</a></li> -->
-                <li><a href="#"><i class="icon-user"></i> Users</a></li>
+                <!-- <li><a href="#"><i class="icon-user"></i> Users</a></li> -->
                 <li><a href="#"><i class="icon-settings"></i> Settings</a></li>
-                <li><a href="<?php echo site_url('Login/logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
+                <li><a href="<?php echo site_url('logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
             </ul>
         </div>
 
@@ -36,9 +36,9 @@
             </div>
             <ul class="nav-links">
                 <li><a href="<?php echo site_url('Dashboard'); ?>" class="active"><i class="icon-dashboard"></i> Dashboard</a></li>
-                <li><a href="<?php echo site_url('Dashboard/child_information'); ?>"><i class="icon-user"></i> <?php echo $username; ?></a></li>
+                <li><a href="<?php echo site_url('child_info'); ?>"><i class="icon-user"></i> Child Information</a></li>
                 <!-- <li><a href="#"><i class="icon-settings"></i> Settings</a></li> -->
-                <li><a href="<?php echo site_url('Login/logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
+                <li><a href="<?php echo site_url('logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
             </ul>
         </div>
 

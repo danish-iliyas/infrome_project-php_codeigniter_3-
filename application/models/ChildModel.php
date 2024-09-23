@@ -32,4 +32,24 @@ class ChildModel extends CI_Model {
             'total_children' => count($result) // Count the number of children
         ];
     }
+    public function get_all_children_user() {
+       
+        $child_query = $this->db->get('child_registration');
+        $child_result = $child_query->result_array(); //  result as an array
+        
+        // total children
+        $total_children = $this->db->count_all_results('child_registration');
+    
+        // Fetch the total number of users with level = 2
+        $this->db->where('level', 2); // Add condition for level = 2
+        $total_users = $this->db->count_all_results('login'); // Count users in login table with level 2
+        
+        // Return the result as an array including both child data and user/child counts
+        return [
+            'children' => $child_result,
+            'total_users' => $total_users,
+            'total_children' => $total_children
+        ];
+    }
+    
 }

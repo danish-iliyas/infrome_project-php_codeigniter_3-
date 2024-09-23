@@ -30,12 +30,21 @@ class Dashboard extends CI_Controller {
 			$children_data = $this->ChildModel->get_children_by_user($user_id);
     
     // Pass children and total count to the view
+	        $this->load->model('ChildModel');
           $data['children'] = $children_data['children'];
           $data['total_children'] = $children_data['total_children'];
+
+		  $total_data = $this->ChildModel->get_all_children_user();
+
+		//   print_r($data['children']);
+        //     die();
+
           $data['level'] = $level;
 		  $data['username'] = $this->session->userdata('username');
-            // checking level of the data 
-            // print_r($data); outpot = 0,1,2
+		  $data['total_users'] =$total_data['total_users'];
+		  $data['total_children'] = $total_data['total_children']; 
+            //checking  of the data 
+            // print_r($data['total_users']); //outpot = 2
             // die();
             $this->load->view('dashboard', $data);
 			// $this->load->view('child_information', $data);
@@ -67,7 +76,9 @@ class Dashboard extends CI_Controller {
             // Load the child information view			
 			$this->load->view('includes/sliderbar', $data); 
             $this->load->view('child_information', $data);
-        } else {
+        } 
+		  
+		else {
             redirect('login');
         }
     }
