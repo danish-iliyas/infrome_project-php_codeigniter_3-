@@ -14,10 +14,17 @@ class ChildModel extends CI_Model {
         // echo "Name: $name<br>";
         // die('here');
 
-        if($this->child_exists($data['name'])) {
-            return false;
+        if ($this->is_name_exists($data['name'])) {
+            return false; // Name already exists
         }
         return $this->db->insert('child_registration', $data); // Inserts data including user_id
+    }
+    public function is_name_exists($name) {
+        $this->db->where('name', $name);
+        $query = $this->db->get('child_registration');
+
+        // Check if any rows are returned
+        return $query->num_rows() > 0;
     }
 
     public function get_children_by_user($user_id) {

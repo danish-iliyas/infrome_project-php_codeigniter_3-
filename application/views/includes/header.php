@@ -4,6 +4,8 @@
 
 <header>
     <?php if ($level == 0): ?>
+        <?php  print_r($level); 
+        die();?>
         <h1><?php echo $username; ?> ! Dashboard Overview</h1>
         <div class="header-right">
             <input type="search" placeholder="Search...">

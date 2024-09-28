@@ -105,43 +105,15 @@
                             <td>Admin</td>
                             <td>Active</td>
                             <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Delete</button>
+                                <!-- <button class="btn-edit">Edit</button>
+                                <button class="btn-delete">Delete</button> -->
                             </td>
                         </tr>
                         <!-- More rows can be added here -->
                     </tbody>
                 </table>
             </section>
-            <section class="users-section">
-                <h2>Manage Users</h2>
-                <button class="btn-add-user">Add New User</button>
-                <table class="users-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>john@example.com</td>
-                            <td>Admin</td>
-                            <td>Active</td>
-                            <td>
-                                <button class="btn-edit">Edit</button>
-                                <button class="btn-delete">Delete</button>
-                            </td>
-                        </tr>
-                       
-                        <!-- More rows can be added here -->
-                    </tbody>
-                </table>
-            </section>
+           
         </div>
     </div>
 
@@ -251,7 +223,7 @@
             <section class="stats-section">
                 <div class="stats-card">
                     <h3>Total Registrations</h3>
-                    <p> <?php echo $total_children; ?></p>
+                    <p> <?php echo $total_children_by_user; ?></p>
                 </div>
                 <!-- <div class="stats-card">
                     <h3>Active Users</h3>
@@ -267,22 +239,7 @@
                 </div> -->
             </section>
 
-            <div class="popup-overlay"  style="display: none; position: absolute;" id="popupOverlay">
-             <div class="popup">
-            <button class="btn-close"  onclick="closePopup()">X</button>
-            <h2>Register New Child</h2>
-            <p>Please fill in the form below to register a new child.</p>
-            <form action="<?= base_url().'add_child' ?>"  method="post">
-                <input type="text" name="name" placeholder="Child's Name" required>
-                <input type="text" name="father_name" placeholder="Father's Name" required>
-                <input type="text" name="mother_name" placeholder="Mother's Name" required>
-                <select name="gender" required>
-                    <option value="" disabled selected>Select Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-                <button type="submit" class="btn-submit">Submit</button>
-            </form>
+            
         </div>
     </div>
             

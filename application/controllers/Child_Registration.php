@@ -46,8 +46,11 @@ class Child_Registration extends CI_Controller {
 
 			if ($this->ChildModel->insert_child_data($data)) {
 				echo "Data saved successfully!";
+				redirect('child_info');
 			} else {
-				echo "Failed to save data.";
+				// Handle the case where the name already exists
+				echo "Name already exists or failed to save data.";
+				// redirect('child_info');
 			}
 		}
 			
@@ -55,5 +58,59 @@ class Child_Registration extends CI_Controller {
 			// print($name); //
 		
 	}
+
+	function addemployee() {
+
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			// Retrieve the name from the POST request
+			$data = [
+				'username' => $this->input->post('username'),
+				'email'=>$this->input->post('email'),
+				'password'=>$this->input->post('password'),
+				'level'=>$this->input->post('level'),
+				'gender'=>$this->input->post('gender'),
+				'status'=>$this->input->post('status'),
+
+ 			];
+			
+			// print_r($data);
+			// die();
+
+			 $this->load->model('UserModel');
+			if ($this->UserModel->insert_user($data)) {
+				echo "Data saved successfully!";
+				redirect('employee_info');
+			} else {
+				echo "Name already exists or failed to save data.";
+				redirect('employee_info');
+			}
+		}
+
+
+		// $this->load->view('includes/header');
+		// $this->load->view('registration');
+		// $this->load->view('includes/footer');
+	}
+
+	public function delete_user($login_id) {
+		// Load the UserModel model
+		$this->load->model('UserModel');
 	
+		// Call the model function to delete the user
+		$deleted = $this->UserModel->delete_user($login_id);
+	
+		// Check if the deletion was successful
+		if ($deleted) {
+			// Set a success message
+			$this->session->set_flashdata('success', 'User deleted successfully.');
+		} else {
+			// Set an error message
+			$this->session->set_flashdata('error', 'Failed to delete user.');
+		}
+	
+		// Redirect back to the user list or the relevant page
+		redirect('employee_info'); // Adjust this route as needed
+	}
+	
+	 
 }
