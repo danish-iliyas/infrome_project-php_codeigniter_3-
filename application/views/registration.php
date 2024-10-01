@@ -26,7 +26,7 @@
                     <p>12 Pending</p>
                 </div> -->
             </section>
-            <div class="popup-overlay"  style="display: none; position: absolute;" id="popupOverlay">
+            <div class="popup-overlay"  style="display: none; position: relative ;" id="popupOverlay">
              <div class="popup">
             <button class="btn-close"  onclick="closePopup()">X</button>
             <h2>Register New Child</h2>
@@ -91,6 +91,7 @@
             </section>
         </div>
     </div>  
+    <?php $this->load->view('includes/footer');?>
 </div>
 <!-- employee_registration section -->
 <?php elseif ($level == 1): ?>
@@ -201,6 +202,7 @@
            </section>
         </div>
     </div>  
+  
 </div>
     <!-- end section -->
 <?php else: ?>
@@ -210,13 +212,23 @@
 <script>
       function openPopup() {
         document.getElementById('popupOverlay').style.display = 'flex';
-        // document.body.classList.add('blur-background');
-
-        document.getElementById('dashboard').style.display = 'block';
-        document.body.classList.add('blur-background');
+        document.getElementById('openPopup').style.display = 'none';
+        
+        // Hide the user table
+        const userTable = document.querySelector('.users-table'); // Correct selector
+        if (userTable) {
+            userTable.style.display = 'none'; // Hiding the table
+        }
     }
     function closePopup() {
         document.getElementById('popupOverlay').style.display = 'none';
         document.body.classList.remove('blur-background');
+        document.getElementById('openPopup').style.display = 'block';
+
+        // Show the user table again when the popup is closed
+        const userTable = document.querySelector('.users-table');
+        if (userTable) {
+            userTable.style.display = 'table'; // Displaying the table
+        }
     }
 </script>

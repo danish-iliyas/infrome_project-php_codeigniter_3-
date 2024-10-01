@@ -53,7 +53,7 @@ class Dashboard extends CI_Controller {
             // print_r($data['level']); //outpot = 2
             // die();
             $this->load->view('dashboard', $data);
-			// $this->load->view('child_information', $data);
+			// $this->load->view('includes/footer'); 
 
         } else {
             

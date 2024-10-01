@@ -18,7 +18,14 @@
 
         <!-- Login Box -->
         <div class="login-box">
+        <?php if($this->session->flashdata('error')): ?>
+    <div id="errorMessage" style="color: red; font-weight: bold; margin-bottom: 15px;">
+        <?php echo $this->session->flashdata('error'); ?>
+    </div>
+    <?php endif; ?>
+
             <h2>Login</h2>
+           
             <form action="<?= base_url('login') ?>" method="POST">
                 <div class="input-group">
                     <input type="text" name="username" required>
@@ -35,3 +42,13 @@
     </div>
 </body>
 </html>
+<script>
+
+// Automatically hide the error message after 3 seconds
+setTimeout(function() {
+    var errorMessage = document.getElementById('errorMessage');
+    if (errorMessage) {
+        errorMessage.style.display = 'none';
+    }
+}, 3000); // 3000 milliseconds = 3 seconds
+</script>

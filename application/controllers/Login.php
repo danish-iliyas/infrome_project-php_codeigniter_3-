@@ -75,7 +75,7 @@ class Login extends CI_Controller {
 				$this->session->set_flashdata('error', 'Invalid credentials');
 				redirect('Login');
 			}
-		}
+		}	
 	}
 	public  function logout() {
 		$this->session->sess_destroy();

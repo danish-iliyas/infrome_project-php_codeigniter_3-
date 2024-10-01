@@ -85,12 +85,70 @@ class Child_Registration extends CI_Controller {
 				redirect('employee_info');
 			}
 		}
-
-
-		// $this->load->view('includes/header');
-		// $this->load->view('registration');
-		// $this->load->view('includes/footer');
 	}
+	function addemployeee() {
+
+        if ($this->session->userdata('user_id') !== NULL) {
+            // $this->load->model('ChildModel');
+            // $user_id = $this->session->userdata('user_id'); // Get the user ID from session
+            
+            // Get total number of children registered by the user
+            // $children_data = $this->ChildModel->get_children_by_user($user_id);
+                 $this->load->model('UserModel');
+                 $userData = $this->UserModel->get_user();
+                 $data['users'] = $userData['users'];
+            // Pass children and total count to the view
+            // $data['children'] = $children_data['children'];
+            // $data['total_children'] = $children_data['total_children'];
+               
+			  
+	   	    // print_r($data['total_children']);
+            // die("hi");
+
+            $data['level'] = $this->session->userdata('level');
+			$data['username'] = $this->session->userdata('username');
+			
+			
+	   	    // print_r($data['username']);
+            // exit(); // or die();
+            // Load the child information view			
+			$this->load->view('includes/sliderbar', $data); 
+			$this->load->view('form');
+        } 
+		  
+		else {
+            redirect('login');
+        }
+		
+		// $this->;
+		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			// Retrieve the name from the POST request
+			$data = [
+				'username' => $this->input->post('username'),
+				'email'=>$this->input->post('email'),
+				'password'=>$this->input->post('password'),
+				'level'=>$this->input->post('level'),
+				'gender'=>$this->input->post('gender'),
+				'status'=>$this->input->post('status'),
+
+ 			];
+			
+			// print_r($data);
+			// die();
+
+			 $this->load->model('UserModel');
+			if ($this->UserModel->insert_user($data)) {
+				echo "Data saved successfully!";
+				redirect('employee_info');
+			} else {
+				echo "Name already exists or failed to save data.";
+				redirect('employee_info');
+			}
+		}
+	}
+
+
+
 
 	public function delete_user($login_id) {
 		// Load the UserModel model

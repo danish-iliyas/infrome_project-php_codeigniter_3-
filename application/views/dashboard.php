@@ -15,8 +15,8 @@
                <!-- // Correctly accessing the 'level' value
                 print_r($level);  //output = 0,1,2
                  exit;
-    -->
-
+       -->
+        <div class="containersliderandmaincontent " style ="display: flex; width: 100%;">
       <?php $this->load->view('includes/sliderbar'); ?>
 
          <!-- Main Content -->
@@ -115,6 +115,7 @@
             </section>
            
         </div>
+        <?php $this->load->view('includes/footer');?>
     </div>
 
 
@@ -213,11 +214,14 @@
             </section>
            -->
         </div>
+        <?php $this->load->view('includes/footer');?>
     </div>
 
 <!--   copy for different role end        -->
     <?php elseif ($level == 2): ?>
+        
         <div class="main-content">
+       
         <?php $this->load->view('includes/header'); ?>
       
             <section class="stats-section">
@@ -240,10 +244,13 @@
             </section>
 
             
-        </div>
+        </div>  <!-- end of main content -->
+        </div>  <!-- extra div for dashboard -->
+        
     </div>
-            
-        </div>
+        <!-- <div class="footer" style ="display: flex ; background-color: black; height: 50px; width: 100%; position: absolute; bottom: 0; color: white; left-margin: 50px; right: 50;">  <p> footer</p> </div>
+        </div> -->
+        <?php $this->load->view('includes/footer');?>
     </div>
     <?php else: ?>
     <h2>Guest Section</h2>

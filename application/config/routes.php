@@ -56,7 +56,7 @@ $route['child_info'] = 'Dashboard/child_information';
 
 $route['add_child'] = 'Child_Registration/addchilddata';
 $route['employee_info'] = 'Dashboard/employee_information';
-$route['add_employee'] = 'Child_Registration/addemployee';
+$route['add_employee'] = 'Child_Registration/addemployeee';
 $route['delete_user/(:num)'] = 'Child_Registration/delete_user/$1';
 
 $route['404_override'] = '';
