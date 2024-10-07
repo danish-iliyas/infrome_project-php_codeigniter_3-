@@ -25,7 +25,7 @@
                 <!-- <li><a href="#" class="active"><i class="icon-dashboard"></i> Dashboard</a></li> -->
                 <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="icon-user"></i> Dashboard</a></li>
                 <li><a href="<?php echo site_url('employee_info'); ?>"><i class="icon-settings"></i> Employee  Information</a></li>
-                <li><a href="<?php echo site_url('add_employee'); ?>"><i class="icon-settings"></i> Add Employee</a></li>
+                <!-- <li><a href="<?php echo site_url('add_employee'); ?>"><i class="icon-settings"></i> Add Employee</a></li> -->
                 <li><a href="<?php echo site_url('logout'); ?>" ><i class="icon-logout"></i> Logout</a></li>
             </ul>
         </div>

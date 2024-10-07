@@ -25,7 +25,7 @@
     <?php endif; ?>
 
             <h2>Login</h2>
-           
+ 
             <form action="<?= base_url('login') ?>" method="POST">
                 <div class="input-group">
                     <input type="text" name="username" required>
@@ -37,7 +37,7 @@
                 </div>
                 <button type="submit" class="login-btn">Login</button>
             </form>
-            <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+            <p class="signup-link">Do you have an account ?<a href="#"><br>Please Login.</a></p>
         </div>
     </div>
 </body>

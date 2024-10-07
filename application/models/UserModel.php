@@ -41,4 +41,17 @@ class UserModel extends CI_Model {
         $this->db->where('login_id', $login_id);
         return $this->db->update('login', ['status' => $status]); // Adjust the table name as necessary
     }
+    public function all_user() {
+        $this->db->where('level', 2); // Add condition for level = 2
+        $total_users = $this->db->count_all_results('login');
+
+        $this->db->where('level', 1); // Add condition for level = 2    
+        $total_admin = $this->db->count_all_results('login');
+        return [
+            'total_users' => $total_users,
+            'total_admin' => $total_admin
+        ] ;
+    }  
 }
+    
+

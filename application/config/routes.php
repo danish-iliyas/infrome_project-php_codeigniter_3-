@@ -54,10 +54,10 @@ $route['login'] = 'Login/login_post';
 $route['logout'] = 'Login/logout';
 $route['child_info'] = 'Dashboard/child_information';
 
-$route['add_child'] = 'Child_Registration/addchilddata';
+$route['add_child'] = 'Registration/addchilddata';
 $route['employee_info'] = 'Dashboard/employee_information';
-$route['add_employee'] = 'Child_Registration/addemployeee';
-$route['delete_user/(:num)'] = 'Child_Registration/delete_user/$1';
+$route['add_employee'] = 'Registration/addemployee';
+$route['delete_user/(:num)'] = 'Registration/delete_user/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

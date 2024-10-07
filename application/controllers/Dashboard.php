@@ -42,7 +42,7 @@ class Dashboard extends CI_Controller {
 
           $data['level'] = $level;
 		  $data['username'] = $this->session->userdata('username');
-		  $data['total_users'] =$total_data['total_users'];
+		//   $data['total_users'] =$total_data['total_users'];
 		  $data['total_children'] = $total_data['total_children']; 
 		//   print_r($data['total_children']); //outpot = 2
 		//   die();
@@ -52,6 +52,10 @@ class Dashboard extends CI_Controller {
             //checking  of the data 
             // print_r($data['level']); //outpot = 2
             // die();
+            $this->load->model('UserModel');
+                $this->UserModel->all_user();
+                $data['total_users'] = $this->UserModel->all_user()['total_users'];
+                $data['total_admin'] = $this->UserModel->all_user()['total_admin'];
             $this->load->view('dashboard', $data);
 			// $this->load->view('includes/footer'); 
 

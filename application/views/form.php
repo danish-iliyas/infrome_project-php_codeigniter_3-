@@ -14,18 +14,10 @@
         <?php $this->load->view('includes/header'); ?>
             <section class="stats-section">
                 
-                <!-- <div class="stats-card">
+                 <!-- <div class="stats-card " >
                     <h3>Active Users</h3>
                     <p>850</p>
-                </div>
-                <div class="stats-card">
-                    <h3>New Signups</h3>
-                    <p>300</p>
-                </div>
-                <div class="stats-card">
-                    <h3>Admin Tasks</h3>
-                    <p>12 Pending</p>
-                </div> -->
+                 </div>  -->
             </section>
             <div class="popup-overlay"  style="display: flex; position: relative;" id="popupOverlay">
              <div class="popup">

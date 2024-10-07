@@ -57,6 +57,6 @@ class ChildModel extends CI_Model {
             'total_users' => $total_users,
             'total_children' => $total_children
         ];
+
     }
-    
 }

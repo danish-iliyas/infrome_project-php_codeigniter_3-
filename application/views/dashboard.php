@@ -128,6 +128,9 @@
             <section class="stats-section">
                 <div class="stats-card">
                     <h3>Total Users</h3>
+                   <!-- <?php print_r($total_users);
+                    // die();?>-->
+    
                     <p><?php echo $total_users; ?></p>
                 </div>
                 <div class="stats-card">
@@ -136,7 +139,7 @@
                 </div>
                 <div class="stats-card">
                     <h3>Admin</h3>
-                    <p>1</p>
+                    <p><?php echo $total_admin; ?></p>
                 </div>
                 <!-- <div class="stats-card">
                     <h3>Admin Tasks</h3>

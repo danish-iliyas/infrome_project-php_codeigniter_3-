@@ -55,16 +55,14 @@ class Login extends CI_Controller {
 			    $this->session->set_userdata('level', $user->level); // Save user role in session
 			    
 				       
-			          //output for debug
-				//   $level = $this->session->userdata('level');
-                //     echo "level: " . $level;
-                //           die();
-			 
-
-                    //  if ($level === 0) {
+			             //  output for debug
+				        //     $level = $this->session->userdata('level');
+                       //     $echo "level: " . $level;
+                      //           die();
+					 //  if ($level === 0) {
 					// 	echo "User level: " . $level;
-                    //    die();
-                    //     }                             
+                   //    die();
+                   //     }                             
 			  
 
 	

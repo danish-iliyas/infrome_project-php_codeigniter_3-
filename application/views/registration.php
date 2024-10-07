@@ -31,7 +31,7 @@
             <button class="btn-close"  onclick="closePopup()">X</button>
             <h2>Register New Child</h2>
             <p>Please fill in the form below to register a new child.</p>
-            <form action="<?= base_url().'index.php/Child_Registration/addchilddata' ?>"  method="post">
+            <form action="<?= base_url().'add_child' ?>"  method="post">
                 <input type="text" name="name" placeholder="Child's Name" required>
                 <input type="text" name="father_name" placeholder="Father's Name" required>
                 <input type="text" name="mother_name" placeholder="Mother's Name" required>
@@ -91,7 +91,7 @@
             </section>
         </div>
     </div>  
-    <?php $this->load->view('includes/footer');?>
+    <!-- <?php $this->load->view('includes/footer');?> -->
 </div>
 <!-- employee_registration section -->
 <?php elseif ($level == 1): ?>
@@ -106,17 +106,9 @@
                 <!-- <div class="stats-card">
                     <h3>Active Users</h3>
                     <p>850</p>
-                </div>
-                <div class="stats-card">
-                    <h3>New Signups</h3>
-                    <p>300</p>
-                </div>
-                <div class="stats-card">
-                    <h3>Admin Tasks</h3>
-                    <p>12 Pending</p>
                 </div> -->
             </section>
-            <div class="popup-overlay"  style="display: none; position: absolute;" id="popupOverlay">
+            <div class="popup-overlay"  style="display: none; position: relative;" id="popupOverlay">
              <div class="popup">
             <button class="btn-close"  onclick="closePopup()">X</button>
             <h2>Register New Employee</h2>
@@ -189,7 +181,7 @@
                            
                             <td>
                              <form action="<?= base_url('delete_user/'.$user['login_id']) ?>" method="post" style="display:inline;">
-    <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                                <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
                              </form>
                                 
                             </td> 
