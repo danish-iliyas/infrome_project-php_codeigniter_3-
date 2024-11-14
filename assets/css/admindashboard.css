@@ -65,6 +65,8 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 5px ;
+    position: absolute;
+     width: 78%
 }
 
 .users-section h2 {
@@ -145,6 +147,8 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 400px; /* Adjust as needed */
     position: relative;
+    width: 100%;
+  
 }
 
 /* Popup Heading */

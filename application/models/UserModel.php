@@ -30,7 +30,7 @@ class UserModel extends CI_Model {
         // Return both children and the total count
         return [
             'users' => $result,
-             // Count the number of children
+             // Count the number of childrenx
         ];
     }
     public function delete_user($login_id) {
