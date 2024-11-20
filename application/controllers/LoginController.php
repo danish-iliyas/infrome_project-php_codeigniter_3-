@@ -41,10 +41,12 @@ class LoginController extends CI_Controller {
         if ($staff) {
             // Set session data
             $session_data = array(
-                'name' => $staff->name,
-                'organization_id' => $staff->organizationid,
+                'name' => $staff->username,
+                'organization_id' => $staff->organization_id,
                 'logged_in' => true
             );
+            // print_r(json_encode($session_data));
+            // die();
             $this->session->set_userdata($session_data);
 
             // Redirect to the dashboard or homepage after successful login
@@ -52,7 +54,7 @@ class LoginController extends CI_Controller {
         } else {
             // If login failed, set an error message and reload the login form
             $this->session->set_flashdata('error', 'Invalid username or password');
-            redirect('logincontroller');
+            redirect('default_controller');
         }
     }
 
@@ -61,6 +63,6 @@ class LoginController extends CI_Controller {
     {
         // Destroy the session and redirect to login page
         $this->session->sess_destroy();
-        redirect('logincontroller');
+        redirect('');
     }
 }

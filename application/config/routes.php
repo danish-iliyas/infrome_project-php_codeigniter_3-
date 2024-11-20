@@ -52,9 +52,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'DefaultPage';
 $route['login'] = 'LoginController/login_post';
 $route['logout'] = 'LoginController/logout';
-$route['child_info'] = 'Dashboard/child_information';
+$route['view_level'] = 'OrganizationController/view_level';
+$route['add'] = 'OrganizationController/add';
 $route['Home']   ='OrganizationController';
 
+
+$route['child_info'] = 'Dashboard/child_information';
 $route['add_child'] = 'Registration/addchilddata';
 $route['employee_info'] = 'Dashboard/employee_information';
 $route['add_employee'] = 'Registration/addemployee';

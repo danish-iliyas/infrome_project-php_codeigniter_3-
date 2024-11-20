@@ -8,12 +8,12 @@
         <h2>SuperAdmin Panel</h2>
     </div>
     <ul class="nav-links">
-        <li><a href="#" class="active"><i class="icon-dashboard"></i> Dashboard</a></li>
+        <li><a href="<?php echo site_url('Home'); ?>" class="active"><i class="icon-dashboard"></i> Dashboard</a></li>
        
-            <li><a href="#"><i class="icon-user"></i> Users</a></li>
-            <li><a onclick="openPopup()"  id="createOrgLink"> <i class="icon-settings"></i> Create Organization</a></li>
+            <li><a href="<?php echo site_url('view_level'); ?>"><i class="icon-user"></i> Assign Designation</a></li>
+            <li><a onclick="openPopup()"  id=""> <i class="icon-settings"></i> Create Organization</a></li>
         
         <li><a  href="<?php echo site_url('logout'); ?>"><i class="icon-logout"></i> Logout</a></li>
     </ul>
 
-</div>
+</div>  
