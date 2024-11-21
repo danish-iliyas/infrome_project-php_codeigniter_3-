@@ -55,6 +55,7 @@ $route['logout'] = 'LoginController/logout';
 $route['view_level'] = 'OrganizationController/view_level';
 $route['add'] = 'OrganizationController/add';
 $route['Home']   ='OrganizationController';
+$route['position_view']   ='OrganizationController/load_assign_position_form';
 
 
 $route['child_info'] = 'Dashboard/child_information';

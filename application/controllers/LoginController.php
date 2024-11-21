@@ -8,6 +8,7 @@ class LoginController extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Staff_model');
+        $this->load->model('OrganizationModel');
         $this->load->library('session');
     }
 
@@ -33,6 +34,7 @@ class LoginController extends CI_Controller {
         //  print_r(''.$name.''.$password.'');
         // Verify the credentials
         $staff = $this->Staff_model->verify_staff_credentials($name, $password);
+
         // print_r($staff ) ;
         // echo"dksj";
         //die();  
@@ -40,15 +42,23 @@ class LoginController extends CI_Controller {
         // If login is successful, set session data
         if ($staff) {
             // Set session data
+            $organization_id = $staff->organization_id;
+            $level = $this->OrganizationModel->get_level($organization_id);
+    
             $session_data = array(
                 'name' => $staff->username,
                 'organization_id' => $staff->organization_id,
+                'level' => $level ,
                 'logged_in' => true
             );
             // print_r(json_encode($session_data));
             // die();
-            $this->session->set_userdata($session_data);
+             $this->session->set_userdata($session_data);
+         
 
+         
+            //   print_r($level);
+            //   die("hi");
             // Redirect to the dashboard or homepage after successful login
             redirect('Home');  // Modify 'dashboard' to whatever page you want to redirect
         } else {

@@ -46,11 +46,11 @@ class OrganizationController extends CI_Controller
                 'gender' => $this->input->post('gender'),
                 'organization_id' => $organization_id
             ];
-           $desiginationdata = [
-            'name' => $this->input->post('name'),
-            'organization_id' => $organization_id
-           ];
-           
+            $desiginationdata = [
+                'name' => $this->input->post('name'),
+                'organization_id' => $organization_id
+            ];
+
             $this->OrganizationModel->insert_hierarchy($desiginationdata);
             // print_r( $this->OrganizationModel->insert_hierarchy($desiginationdata));
             // die();
@@ -65,8 +65,10 @@ class OrganizationController extends CI_Controller
         redirect('Home');
     }
 
-    
-      public function view_level(){
+
+    public function view_level()
+    {
+
         $organization_id = $this->session->userdata('organization_id');
         if ($organization_id) {
             $data['designations'] = $this->OrganizationModel->get_designations_by_org_id($organization_id);
@@ -77,17 +79,38 @@ class OrganizationController extends CI_Controller
             redirect('addLevels');
         }
     }
-           
-      public function add() {
+
+    public function add()
+    {
         $designation = $this->input->post('designation'); // Get input from form
         $organization_id = $this->session->userdata('organization_id');
+        $level = $this->session->userdata('level');
         $desiginationdata = [
             'name' => $designation,
             'organization_id' => $organization_id
-           ];
+        ];
+
+        $counter = $this->OrganizationModel->get_Counter($organization_id);
+            // print_r($counter);;
+            // print_r($level->level);
+            // die("hi");
+
+
+        //    echo'hi';
+
         if (!empty($designation)) {
-            // Save the designation
-            $this->OrganizationModel->insert_hierarchy($desiginationdata);
+
+            if ($counter <=  $level->level) {
+                // Save the designation
+                $this->OrganizationModel->insert_hierarchy($desiginationdata);
+                $this->OrganizationModel->update_counter($organization_id, $counter + 1);
+                // $this->session->set_userdata('counter', $counter);
+
+
+            } else {
+                $this->session->set_flashdata('error', 'Organization has reached the maximum level ');
+                redirect('view_level');
+            }
 
             // Redirect back to the index
             redirect('Home');
@@ -97,5 +120,22 @@ class OrganizationController extends CI_Controller
             redirect('designation');
         }
     }
-          
+
+    public function load_assign_position_form()
+    {
+         $organization_id = $this->session->userdata('organization_id'); // Replace with how you get the ID
+
+        // Load model
+     
+         
+        // Fetch hierarchical levels based on organization ID
+        $data['hierarchy_levels'] = $this->OrganizationModel->get_all_levels($organization_id);
+//         echo '<pre>';
+// print_r($data);
+// echo '</pre>';;
+        
+        // Load the view
+        $this->load->view('assign_position_partial' , $data);
+    }
+
 }

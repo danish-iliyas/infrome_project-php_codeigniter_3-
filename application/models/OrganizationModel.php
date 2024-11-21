@@ -24,5 +24,47 @@ class OrganizationModel extends CI_Model {
         $query = $this->db->get('hierarchy_levels'); // Fetch from the hierarchy_levels table
         return $query->result_array();
     }
+
+    public function get_level( $id ){
+        $this->db->select('level');
+        $this->db->where('id' ,$id);
+        $query = $this->db->get('organizations');
+        if ($query->num_rows() > 0) {
+             return $query->row();
+        }else{
+            return false;
+        }
+        
+
+    }
+    public function get_Counter($organization_id){
+        $this->db->select('counter');
+        $this->db->where('id' ,$organization_id);
+        $query = $this->db->get('organizations');
+        $result = $query->row();
+        return $result ? $result->counter : null;
+    }
+
+    public function update_counter($organization_id, $new_counter_value)
+{
+    $data = ['counter' => $new_counter_value];
+    $this->db->where('id', $organization_id);
+    $this->db->update('organizations', $data);
+}
+    // asigned position 
+    public function get_all_levels($organization_id)
+    {
+        if (!$organization_id) {
+            return [];
+        }
+
+        // Query to fetch levels for a specific organization
+        $this->db->where('organization_id', $organization_id);
+        $query = $this->db->get('hierarchy_levels'); // Replace 'hierarchical_levels' with your table name
+
+        return $query->result_array(); // Return results as an array
+    }
+  
+
 }
 ?>

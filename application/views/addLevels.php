@@ -4,76 +4,76 @@
 <style>
     /* Styling for success and error messages */
     /* Wrapper for the Designation Section */
-.designation-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-}
+    .designation-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+    }
 
-/* Header */
-.designation-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-family: Arial, sans-serif;
-}
+    /* Header */
+    .designation-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+    }
 
-/* Form Styles */
-.designation-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 20px;
-}
+    /* Form Styles */
+    .designation-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
 
-.designation-form input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+    .designation-form input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-.designation-form button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    .designation-form button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-.designation-form button:hover {
-    background-color: #0056b3;
-}
+    .designation-form button:hover {
+        background-color: #0056b3;
+    }
 
-/* List Styles */
-.designation-list {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #ffffff;
-}
+    /* List Styles */
+    .designation-list {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #ffffff;
+    }
 
-.designation-item {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-    font-family: Arial, sans-serif;
-}
+    .designation-item {
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+        font-family: Arial, sans-serif;
+    }
 
-.designation-item:last-child {
-    border-bottom: none;
-}
+    .designation-item:last-child {
+        border-bottom: none;
+    }
 
-.no-designations {
-    text-align: center;
-    color: #777;
-    font-family: Arial, sans-serif;
-}
+    .no-designations {
+        text-align: center;
+        color: #777;
+        font-family: Arial, sans-serif;
+    }
 
     .alert {
         margin-top: 20px;
@@ -110,6 +110,12 @@
                 <!-- #region -->
                 <div class="designation-container">
                     <h2>Designation Management</h2>
+
+                    <?php if ($this->session->flashdata('error')): ?>
+                        <div id="errorMessage" style="color: red; font-weight: bold; margin-bottom: 15px;">
+                            <?php echo $this->session->flashdata('error'); ?>
+                        </div>
+                    <?php endif; ?>
 
                     <!-- Form to Add Designation -->
                     <form action="<?= base_url('add') ?>" method="post" class="designation-form">
@@ -188,4 +194,26 @@
             errorMessage.style.display = 'none';
         }
     }, 2000); 
+
+
+
+    document.getElementById('assignPositionLink').addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default link behavior
+
+        // Show a loading spinner or message (optional)
+        const container = document.querySelector('.designation-container');
+        container.innerHTML = '<p>Loading...</p>';
+
+        // Make AJAX request to fetch the Assign Position form
+        fetch('<?php echo site_url('position_view'); ?>')
+            .then(response => response.text())
+            .then(html => {
+                // Replace the container's content with the fetched HTML
+                container.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error loading Assign Position form:', error);
+                container.innerHTML = '<p>Error loading content. Please try again.</p>';
+            });
+    });
 </script>

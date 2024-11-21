@@ -10,7 +10,8 @@
     <ul class="nav-links">
         <li><a href="<?php echo site_url('Home'); ?>" class="active"><i class="icon-dashboard"></i> Dashboard</a></li>
        
-            <li><a href="<?php echo site_url('view_level'); ?>"><i class="icon-user"></i> Assign Designation</a></li>
+            <li><a href="<?php echo site_url('view_level'); ?>"><i class="icon-user"></i> Assign Hierarchy</a></li>
+            <li><a href="#" id="assignPositionLink"><i class="icon-user"></i> Assign Position</a></li>
             <li><a onclick="openPopup()"  id=""> <i class="icon-settings"></i> Create Organization</a></li>
         
         <li><a  href="<?php echo site_url('logout'); ?>"><i class="icon-logout"></i> Logout</a></li>
