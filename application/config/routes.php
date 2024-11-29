@@ -56,6 +56,7 @@ $route['view_level'] = 'OrganizationController/view_level';
 $route['add'] = 'OrganizationController/add';
 $route['Home']   ='OrganizationController';
 $route['position_view']   ='OrganizationController/load_assign_position_form';
+$route['save_position'] = 'OrganizationController/save_position';
 
 
 $route['child_info'] = 'Dashboard/child_information';

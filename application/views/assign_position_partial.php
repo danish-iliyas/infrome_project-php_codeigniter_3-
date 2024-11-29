@@ -11,7 +11,7 @@
             <select id="hierarchy_levels" name="hierarchy_levels" required>
                 <option value="">Select Level</option>
                 <?php foreach ($hierarchy_levels as $level): ?>
-                    <option value="<?php echo $level['id']; ?>"><?php echo htmlspecialchars($level['name']); ?></option>
+                    <option value="<?php echo $level['id']; ?>"><?php echo ($level['name']); ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

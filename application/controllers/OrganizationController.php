@@ -138,4 +138,26 @@ class OrganizationController extends CI_Controller
         $this->load->view('assign_position_partial' , $data);
     }
 
+    public function save_position(  ){
+             $data['name'] = $this->input->post('position_name');
+             $data['hierarchy_id'] = $this->input->post('hierarchy_levels');
+             $data['organization_id'] = $this->session->userdata('organization_id');
+            //  print_r($data);
+            //  die();
+
+            if(empty($data['name'] || $data['hierarchy_id'])){
+                  $this->session->set_flashdata('error','All fields are required');
+            }
+            $result= $this->OrganizationModel->save_position_data($data);
+            redirect('view_level');
+            if($result){
+                $this->session->set_flashdata('success','Assigned Successfull Position');
+                // die("hi");
+                
+               
+            }else{
+                $this->session->set_flashdata('error','Data not Uploaded');
+            }
+    }
+
 }

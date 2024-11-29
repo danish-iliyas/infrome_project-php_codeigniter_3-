@@ -64,7 +64,10 @@ class OrganizationModel extends CI_Model {
 
         return $query->result_array(); // Return results as an array
     }
-  
+    public function save_position_data($data){
+            $this->db->insert('positions', $data);
+            
+    }
 
 }
 ?>
