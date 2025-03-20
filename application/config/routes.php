@@ -49,15 +49,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'DefaultPage';
 $route['login'] = 'Login/login_post';
 $route['logout'] = 'Login/logout';
 $route['child_info'] = 'Dashboard/child_information';
 
-$route['add_child'] = 'Registration/addchilddata';
+// $route['add_child'] = 'Registration/addchilddata';
 $route['employee_info'] = 'Dashboard/employee_information';
 $route['add_employee'] = 'Registration/addemployee';
-$route['delete_user/(:num)'] = 'Registration/delete_user/$1';
+// $route['delete_user/(:num)'] = 'Registration/delete_user/$1';
+// $route['viewChildrenData'] = 'Dashboard/fetchChildInformation';
+$route['Dashboard/fetchChildInformation/(:num)'] = 'Dashboard/fetchChildInformation/$1';
 
+
+$route['user_info'] = 'api/UserApiController/users';
+$route['tesing_login'] = 'api/UserApiController/tesing_Login';
+$route['user_login'] = 'api/UserApiController/user_login';
+$route['child_partial_registeration'] = 'api/UserApiController/child_partial_registeration';
+$route['child_partial_with_full_registeration'] = 'api/UserApiController/child_partial_or_full_registeration';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
