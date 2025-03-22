@@ -116,46 +116,52 @@
             <?php endif; ?>
 
             <!-- Wrap the table inside the scroll container -->
-            <div class="child-table-container">
-                <table class="child-table">
-                    <thead>
-                        <tr>
-                            <th>Child's Name</th>
-                            <th>Father's Name</th>
-                            <th>Mother's Name</th>
-                            <th>Gender</th>
-                            <th>Date of Birth</th>
-                            <th>HW</th>
-                            <th>Actions</th> <!-- New Action column -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (!empty($children)) : ?>
-                            <?php foreach ($children as $child) : ?>
-                                <tr>
-                                    <td><?php echo $child['child_name']; ?></td>
-                                    <td><?php echo $child['father_name']; ?></td>
-                                    <td><?php echo $child['mother_name']; ?></td>
-                                    <td><?php echo $child['gender']; ?></td>
-                                    <td><?php echo $child['dateofbirth']; ?></td>
-                                    <td><?php echo $child['health_worker_name']; ?></td>
-                                    <td>
-                                        <div class="action-icons">
-                                            <a href="#" class="approve-icon" data-tooltip="Approved"></a>
-                                            <a href="#" class="disapprove-icon" data-tooltip="Disapproved"></a>
-                                            <a href="#" class="show-icon" data-tooltip="Show"></a>
-                                        </div>
-                                    </td> <!-- Action buttons -->
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <tr>
-                                <td colspan="7">No child information found.</td>
-                            </tr>
+<!-- Wrap the table inside the scroll container -->
+<div class="child-table-container">
+    <table class="child-table">
+        <thead>
+            <tr>
+                <th>Child's Name</th>
+                <th>Father's Name</th>
+                <th>Mother's Name</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>HW</th>
+                <?php if ($this->session->userdata('level') != 4): ?>
+                    <th>Actions</th> <!-- New Action column only for levels other than 4 -->
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($children)) : ?>
+                <?php foreach ($children as $child) : ?>
+                    <tr>
+                        <td><?php echo $child['child_name']; ?></td>
+                        <td><?php echo $child['father_name']; ?></td>
+                        <td><?php echo $child['mother_name']; ?></td>
+                        <td><?php echo $child['gender']; ?></td>
+                        <td><?php echo $child['dateofbirth']; ?></td>
+                        <td><?php echo $child['health_worker_name']; ?></td>
+                        <?php if ($this->session->userdata('level') != 4): ?>
+                            <td>
+                                <div class="action-icons">
+                                    <a href="#" class="approve-icon" data-tooltip="Approved"></a>
+                                    <a href="#" class="disapprove-icon" data-tooltip="Disapproved"></a>
+                                    <a href="#" class="show-icon" data-tooltip="Show"></a>
+                                </div>
+                            </td> <!-- Action buttons -->
                         <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td colspan="7">No child information found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
         </div>
     </div>
 </div>

@@ -184,13 +184,14 @@
     <section class="stats-section">
         <div class="stats-card">
             <h3>Total Users</h3>
-            <p> <?php ?> 10</p>
+            <p> <?php ?> 20</p>
         </div>
         <!-- <div class="stats-card">
             <h3>Total children Registrations</h3>
             <p> <?php ?></p>
         </div>
         <div class="stats-card">
+            <h3>Active Users</h3>
             <h3>Admin</h3>
             
         </div> -->

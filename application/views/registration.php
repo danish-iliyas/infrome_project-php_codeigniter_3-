@@ -5,7 +5,7 @@
 <!--   copy for different role end        -->
 
 <style>
-   /* General popup styles */
+    /* General popup styles */
 .popup {
     background-color: #fff;
     padding: 10px;
@@ -70,7 +70,6 @@
     border-radius: 5px;
     cursor: pointer;
 }
-
 </style>
     
 <?php if ($level == 2): ?>

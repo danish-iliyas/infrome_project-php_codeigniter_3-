@@ -231,13 +231,13 @@ class Dashboard extends CI_Controller {
     //  print_r($doctorId,"jkddjdfhjdsfhdf");
     // Debugging: print to log and browser
     log_message('debug', 'Children function called with doctorId: ' . $doctorId);
-    echo "Controller hit with doctorId: $doctorId";
+    // echo "Controller hit with doctorId: $doctorId";
 
     // Fetch children data by doctor ID
     $children = $this->ChildModel->getChildrenByDoctor($doctorId);
     // print_r($children,"dhsjhdjsd");
     // Clear output buffer to remove any unexpected output (e.g., whitespace)
-    ob_clean();
+    // ob_clean();
     
     // Set the content type to JSON
     header('Content-Type: application/json');
@@ -255,10 +255,14 @@ class Dashboard extends CI_Controller {
     //     $this->load->model('ChildModel');  // Replace 'YourModelName' with the actual name of your model
     //     $doctorId = $this->session->userdata('user_id');
     //     // print_r($doctorId);
+         //     // echo("hi");
+  
     //     // echo("hi");
-    //     // die();
+    //     // die();  //     // die();
     //     $level = $this->session->userdata('level');  
-    //     // $userid = $this->session->userdata('userid');
+ 
+    //     // echo("hi");
+    //     // die();  //     // $userid = $this->session->userdata('userid');
     //     $data['userid'] = $this->session->userdata('userid');
     //     $data['level'] = $level;  // Assuming you store the doctor's login ID in session
     //     $data['children'] = $this->ChildModel->getChildrenByDoctorLevel($doctorId);  // Fetch the child information for this doctor
@@ -316,6 +320,20 @@ class Dashboard extends CI_Controller {
     }
     
     
+    public function healthWorkerDashboard() {
+        // Fetch health worker-specific data
+        $data['user_id'] = $this->session->userdata('user_id');
+        $data['level'] = $this->session->userdata('level');
+        $data['userid'] = $this->session->userdata('userid');
+        // print_r($data['user_id']);
+        // die();
+        // Load the ChildModel to fetch total children managed by the health worker
+        $this->load->model('ChildModel');
+        $data['total_children'] = $this->ChildModel->getTotalChildrenByHealthWorkerId($data['user_id']);
+        
+        // Load the health worker dashboard view
+        $this->load->view('dashboard', $data);
+    }
     
     
      

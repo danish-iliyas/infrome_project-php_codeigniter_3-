@@ -75,23 +75,24 @@ class Login extends CI_Controller {
 	
 						case 4: // Health Worker
 							// Load the Child model
-							$this->load->model('ChildModel');
+							// $this->load->model('ChildModel');
 							
 							
-							$data['user_id'] = $this->session->userdata('user_id');
-							$data['level'] = $this->session->userdata('level');
-							$data['userid'] = $this->session->userdata('userid'); 
+							// $data['user_id'] = $this->session->userdata('user_id');
+							// $data['level'] = $this->session->userdata('level');
+							// $data['userid'] = $this->session->userdata('userid'); 
 						
 							
-							print_r($data['user_id']); 
+							// print_r($data['user_id']); 
 						
-							$data['total_children'] = $this->ChildModel->getTotalChildrenByHealthWorkerId($data['user_id']);
-						
-							
-							// print_r($data); 
+							// $data['total_children'] = $this->ChildModel->getTotalChildrenByHealthWorkerId($data['user_id']);
 						
 							
-							$this->load->view('dashboard', $data);
+							// // print_r($data); 
+						
+							
+							// $this->load->view('dashboard', $data);
+							redirect('Dashboard/healthWorkerDashboard');
 							break;
 						
 	
